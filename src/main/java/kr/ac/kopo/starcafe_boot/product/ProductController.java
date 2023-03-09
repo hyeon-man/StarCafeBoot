@@ -41,7 +41,7 @@ public class ProductController {
     @GetMapping("/create")
     public String create(){
 
-
+    int a = 1;
         return "product/add";
     }
 
