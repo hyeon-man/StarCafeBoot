@@ -42,6 +42,7 @@ public class ProductController {
     public String create(){
 
     int a = 1;
+    int b = 2;
         return "product/add";
     }
 
