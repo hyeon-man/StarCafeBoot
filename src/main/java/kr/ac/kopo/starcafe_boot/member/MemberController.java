@@ -28,7 +28,7 @@ public class MemberController {
 
     @RequestMapping("/login")
     public void login(MemberEntity member){
-
+        int a;
 
         service.login(member);
     }
