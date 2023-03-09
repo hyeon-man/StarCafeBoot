@@ -38,14 +38,14 @@ public class ProductController {
         return "redirect:/product/list";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/add")
     public String create(){
 
 
         return "product/add";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/add")
     public String create(ProductVo vo){
 
 
