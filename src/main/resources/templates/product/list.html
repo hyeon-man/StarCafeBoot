@@ -5,13 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<tr th:each="list : ${list}">
-    <td th:text="${list.id}">emil</td>
-    <td th:text="${list.name}">name</td>
-    <td th:text="${list.status}">stat</td>
-    <td th:text="${list.category}">super</td>
-    <td th:text="${list.price}">super</td>
-</tr>
 
+<table style="border: 1px">
+    <tr>
+            <th>품번</th>
+            <th>제품명</th>
+            <th>제품 상태</th>
+            <th>제품 카테고리</th>
+            <th>제품 가격</th>
+    </tr>
+    <tbody>
+    <tr th:each="list : ${list}">
+        <td th:text="${list.id}">Id</td>
+        <td th:text="${list.name}">name</td>
+        <td th:text="${list.status}">status</td>
+        <td th:text="${list.category}">category</td>
+        <td th:text="${list.price}">price</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
