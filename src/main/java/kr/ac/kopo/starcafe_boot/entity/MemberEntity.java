@@ -1,36 +1,51 @@
 package kr.ac.kopo.starcafe_boot.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ValueGenerationType;
 
-@Getter
 @Setter
+@Getter
 @Entity
 @NoArgsConstructor
 @ToString
 @Builder
+
+@Table(name = "Member")
 public class MemberEntity {
 
     @Id
-    @Column(name = "member_Num")
-    @GeneratedValue
-    private Long memberNum;
-    @Column
+    @GeneratedValue(generator = "auto")
+    @Column(name = "memberNum")
+    private int memberNum;
+
+    @Column(name = "memberId")
     private String id;
 
-    @Column
-    private int pass;
+    @Column(name = "memberPass")
+    private String pass;
 
-    @Column
-    private String name;
+    private String passValidate;
 
-    public MemberEntity(Long memberNum, String id, int pass, String name) {
+
+    /**
+     * // 비밀번호 검증 메소드
+     *
+     * @param entity 비밀번호 검증
+     */
+    public void passValidate(MemberEntity entity) {
+        if (entity.getPass() != entity.getPassValidate()) {
+            System.out.println("비밀번호가 일치하지 않습니다.");
+        } else {
+            System.out.println("비밀번호가 일치합니다.");
+        }
+
+    }
+
+    public MemberEntity(int memberNum, String id, String pass, String passValidate) {
         this.memberNum = memberNum;
         this.id = id;
         this.pass = pass;
-        this.name = name;
+        this.passValidate = passValidate;
     }
 }
