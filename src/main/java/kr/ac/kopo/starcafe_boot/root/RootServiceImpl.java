@@ -1,9 +1,7 @@
-package kr.ac.kopo.starcafe_boot.Root;
+package kr.ac.kopo.starcafe_boot.root;
 
 import kr.ac.kopo.starcafe_boot.entity.ProductEntity;
 import kr.ac.kopo.starcafe_boot.repository.ProductRepository;
-import kr.ac.kopo.starcafe_boot.vo.ProductVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
