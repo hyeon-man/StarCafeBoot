@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-@Entity(name = "member")
+@Entity(name = "member_JPA")
 public class MemberEntity {
 
     @Id

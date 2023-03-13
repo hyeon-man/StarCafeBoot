@@ -9,7 +9,7 @@ import lombok.*;
 
 @Getter
 @Setter
-@Entity
+@Entity (name = "Product_JPA")
 @NoArgsConstructor
 @ToString
 @Builder

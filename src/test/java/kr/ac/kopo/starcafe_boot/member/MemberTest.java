@@ -8,6 +8,7 @@ import kr.ac.kopo.starcafe_boot.entity.MemberEntity;
 import kr.ac.kopo.starcafe_boot.entity.QMemberEntity;
 import kr.ac.kopo.starcafe_boot.querydsl.QueryDSlConfig;
 import kr.ac.kopo.starcafe_boot.vo.MemberVo;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,10 +24,10 @@ class MemberTest {
 
     @Autowired
     MemberController controller;
-
-
     @Autowired
     JPAQueryFactory queryFactory;
+
+    List<MemberVo> memberList;
 
     MemberVo vo = MemberVo.builder()
             .memberNum(22L)
@@ -34,6 +35,8 @@ class MemberTest {
             .pass("test")
             .name("test")
             .build();
+
+
 
 
     @Test

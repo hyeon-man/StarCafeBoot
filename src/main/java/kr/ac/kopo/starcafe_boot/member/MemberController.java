@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,29 +18,29 @@ public class MemberController {
         this.service = service;
     }
 
-    @PostMapping("/api/member/save")
-    public String saveMember(MemberVo member){
+    @PostMapping("/save")
+    public String saveMember(@RequestBody MemberVo member){
         service.saveMember(member);
 
         return "success";
     }
 
-    @PostMapping("/api/member/delete")
+    @PostMapping("/delete")
     public  ResponseEntity<Void> deleteMember(int memberNum){
         service.memberDelete(memberNum);
         System.out.println(ResponseEntity.noContent().build());
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/api/member/information")
+    @PostMapping("/information")
     public ResponseEntity<Void> getInformation(int memberNum){
         service.getInformation(memberNum);
 
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/api/member/updateMember")
-    public ResponseEntity<Void> udtMember(int memberNum, MemberVo vo){
+    @PostMapping("/updateMember")
+    public ResponseEntity<Void> udtMember(@RequestBody int memberNum, @RequestBody MemberVo vo){
         service.udtMember(memberNum, vo);
 
         return ResponseEntity.noContent().build();
