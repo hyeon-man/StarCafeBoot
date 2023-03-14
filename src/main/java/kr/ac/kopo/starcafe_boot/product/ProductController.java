@@ -5,12 +5,10 @@ import kr.ac.kopo.starcafe_boot.vo.ProductVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("product")
@@ -22,7 +20,7 @@ public class ProductController {
     }
 
     @RequestMapping("/list")
-    public String list(Model model){
+    public String list(Model model) {
 
         List<ProductEntity> productList = service.list();
         model.addAttribute("list", productList);
@@ -31,7 +29,7 @@ public class ProductController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id) {
 
         service.delete(id);
 
@@ -39,18 +37,31 @@ public class ProductController {
     }
 
     @GetMapping("/add")
-    public String create(){
+    public String create() {
 
 
         return "product/add";
     }
 
     @PostMapping("/add")
-    public String create(ProductVo vo){
+    public String create(ProductVo vo) {
+        service.save(vo);
+        return "redirect:/product/list";
+    }
 
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable Long id, Model model) {
+        Optional<ProductEntity> updateTarget = service.selectOne(id);
+        model.addAttribute("updateTarget", updateTarget.get());
+        System.out.println(updateTarget);
+        return "product/update";
+    }
 
-     service.save(vo);
+    @PostMapping("/update/{id}")
+    public String updateSave(@PathVariable int id, ProductVo vo) {
 
-     return "redirect:/product/list";
+        service.updateSave(id, vo);
+
+        return "redirect:/product/list";
     }
 }

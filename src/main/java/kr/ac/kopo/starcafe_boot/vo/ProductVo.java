@@ -2,8 +2,10 @@ package kr.ac.kopo.starcafe_boot.vo;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Builder
 public class ProductVo {
     private Long id;

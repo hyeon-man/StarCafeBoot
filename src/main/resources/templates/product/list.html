@@ -8,11 +8,12 @@
 
 <table style="border: 1px">
     <tr>
-            <th>품번</th>
-            <th>제품명</th>
-            <th>제품 상태</th>
-            <th>제품 카테고리</th>
-            <th>제품 가격</th>
+        <th>품번</th>
+        <th>제품명</th>
+        <th>제품 상태</th>
+        <th>제품 카테고리</th>
+        <th>제품 가격</th>
+        <th>제품 관리</th>
     </tr>
     <tbody>
     <tr th:each="list : ${list}">
@@ -21,6 +22,11 @@
         <td th:text="${list.status}">status</td>
         <td th:text="${list.category}">category</td>
         <td th:text="${list.price}">price</td>
+        <td>
+            <a th:href="@{/product/delete/{id}(id = ${list.id})}"> 삭제 </a>
+            <a th:href="@{/product/update/{id}(id = ${list.id})}"> 수정 </a>
+            
+        </td>
     </tr>
     </tbody>
 </table>

@@ -7,10 +7,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class ProductTest {
     @Autowired
     ProductRepository repository;
+
+    @Autowired
+    ProductQueryRepository queryRepository;
     ProductEntity entity = ProductEntity.builder()
             .name("iceAmericano")
             .status(1)
@@ -36,6 +41,15 @@ class ProductTest {
     @DisplayName("제품 한 개 검색")
     void selectOne() {
         System.out.println(repository.findById(id));
+    }
+
+
+
+    @Test
+    @DisplayName("커스텀 쿼리 테스트")
+    void queryCustom (){
+        List<ProductEntity> entity1 = queryRepository.findByName("홍길동");
+        System.out.println(entity1);
     }
 
 }
